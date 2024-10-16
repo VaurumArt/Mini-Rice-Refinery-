@@ -4,61 +4,73 @@ using UnityEngine;
 
 public class AdvanceMillerScript : MonoBehaviour
 {
-    public GameObject whiteRice; // Assign the white rice object to spawn in the Inspector
-    public GameObject brokenRice; // Assign the broken rice object to spawn in the Inspector
-    public Transform whiteRiceSpawn; // Assign the spawn point for white rice in the Inspector
-    public Transform brokenRiceSpawn; // Assign the spawn point for broken rice in the Inspector
-    public float spawnDelay = 0.5f; // Delay between spawns while holding space
-
-    private float timeSinceLastSpawn = 0f;
-    private int riceCount = 0; // Counter for white rice spawned
+    public GameObject standardRice; // Assign the brown rice object to spawn in the Inspector
+    public GameObject bran; // Assign the husk object to spawn in the Inspector
+    public Transform standardRiceSpawn; // Assign the spawn point for brown rice in the Inspector
+    public Transform branSpawn; // Assign the spawn point for husk in the Inspector
+    public float spawnDelay = 3f; // Delay before starting production after reaching 50 BrownRice collisions
+    public int brownRCollisionCount = 0; // Counter for "BrownRice" collisions
+    public bool isProducing = false; // Flag to control the production process
 
     void Update()
     {
-        // Check if the spacebar is held down
-        if (Input.GetKey(KeyCode.Space))
+        // Production will start after the delay, handled in the coroutine
+    }
+
+    // Method to detect collisions with "BrownRice" tagged objects
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("BrownRice"))
         {
-            // Check if enough time has passed since the last spawn
-            if (timeSinceLastSpawn >= spawnDelay)
+            brownRCollisionCount++;
+            Debug.Log("BR collided " + brownRCollisionCount + " times.");
+
+            // Destroy the BrownRice object after counting
+            Destroy(collision.gameObject);
+
+            // Start production only if the collision count reaches exactly 50
+            if (brownRCollisionCount >= 50 && !isProducing)
             {
-                // Spawn 1 white rice
-                WhiteRiceOutput();
+                isProducing = true;
+                Debug.Log("Reached 50 BrownRice collisions. Starting production after delay.");
 
-                // Increment rice count
-                riceCount++;
-
-                // Check if 1 white rice has been spawned
-                if (riceCount >= 1)
-                {
-                    // Spawn 1-2 broken rice for every white rice produced
-                    int brokenRiceToSpawn = Random.Range(1, 2); // Randomly choose between 1 or 2 broken rice
-                    for (int i = 0; i < brokenRiceToSpawn; i++)
-                    {
-                        BrokenRiceOutput();
-                    }
-
-                    // Reset white rice count after spawning broken rice
-                    riceCount = 0; // Reset the rice count after spawning broken rice
-                }
-
-                // Reset the time since last spawn
-                timeSinceLastSpawn = 0f;
+                // Start the production process with a 3-second delay
+                StartCoroutine(StartProductionAfterDelay());
             }
         }
-
-        // Increment the timer by the time that has passed since the last frame
-        timeSinceLastSpawn += Time.deltaTime;
     }
 
-    void WhiteRiceOutput()
+    IEnumerator StartProductionAfterDelay()
     {
-        // Spawn the white rice object at the spawnPoint position and rotation
-        Instantiate(whiteRice, whiteRiceSpawn.position, whiteRiceSpawn.rotation);
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(spawnDelay);
+
+        // Spawn 45 to 50 standard rice
+        int riceToSpawn = Random.Range(45, 51);
+        for (int i = 0; i < riceToSpawn; i++)
+        {
+            StandardRiceOutput();
+        }
+
+        // Spawn 120 to 150 bran
+        int branToSpawn = Random.Range(120, 151);
+        for (int i = 0; i < branToSpawn; i++)
+        {
+            BranOutput();
+        }
+
+        // Reset the brown rice collision count after production
+        brownRCollisionCount -= 50;
+        isProducing = false; // Stop production after the batch is done
     }
 
-    void BrokenRiceOutput()
+    void StandardRiceOutput()
     {
-        // Spawn the broken rice object at the spawnPoint position and rotation
-        Instantiate(brokenRice, brokenRiceSpawn.position, brokenRiceSpawn.rotation);
+        Instantiate(standardRice, standardRiceSpawn.position, standardRiceSpawn.rotation);
+    }
+
+    void BranOutput()
+    {
+        Instantiate(bran, branSpawn.position, branSpawn.rotation);
     }
 }

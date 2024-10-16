@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Spiklet
   - TresherHole
+  - Paddy
+  - BasicMillerHole
+  - BrownRice
+  - StandardRice
   layers:
   - Default
   - TransparentFX

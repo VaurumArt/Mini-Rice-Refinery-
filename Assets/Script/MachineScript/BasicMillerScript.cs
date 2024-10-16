@@ -8,57 +8,68 @@ public class BasicMillerScript : MonoBehaviour
     public GameObject husk; // Assign the husk object to spawn in the Inspector
     public Transform brownRiceSpawn; // Assign the spawn point for brown rice in the Inspector
     public Transform huskSpawn; // Assign the spawn point for husk in the Inspector
-    public float spawnDelay = 0.5f; // Delay between spawns while holding space
-
-    private float timeSinceLastSpawn = 0f;
-    private int riceCount = 0; // Counter for brown rice spawned
+    public float spawnDelay = 3f; // Delay before starting production after reaching 50 Paddy collisions
+    public int paddyCollisionCount = 0; // Counter for "Paddy" collisions
+    public bool isProducing = false; // Flag to control the production process
 
     void Update()
     {
-        // Check if the spacebar is held down
-        if (Input.GetKey(KeyCode.Space))
+        // Production will start after the delay, handled in the coroutine
+    }
+
+    // Method to detect collisions with "Paddy" tagged objects
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Paddy"))
         {
-            // Check if enough time has passed since the last spawn
-            if (timeSinceLastSpawn >= spawnDelay)
+            paddyCollisionCount++;
+            Debug.Log("Paddy collided " + paddyCollisionCount + " times.");
+
+            // Start production only if the collision count reaches exactly 50
+            if (paddyCollisionCount >= 50 && !isProducing)
             {
-                // Spawn brown rice
-                BrownRiceOutput();
+                isProducing = true;
+                Debug.Log("Reached 50 Paddy collisions. Starting production after delay.");
 
-                // Increment rice count
-                riceCount++;
-
-                // Check if 50 brown rice have been spawned
-                if (riceCount >= 1)
-                {
-                    // Spawn 1-2 husk for every brown rice produced
-                    int husksToSpawn = Random.Range(1, 2); // Randomly choose 1 or 2 husks
-                    for (int i = 0; i < husksToSpawn; i++)
-                    {
-                        HuskOutput();
-                    }
-
-                    // Reset brown rice count after spawning husks
-                    riceCount = 0; // Reset the rice count after spawning husks
-                }
-
-                // Reset the time since last spawn
-                timeSinceLastSpawn = 0f;
+                // Start the production process with a 3-second delay
+                StartCoroutine(StartProductionAfterDelay());
             }
         }
+    }
 
-        // Increment the timer by the time that has passed since the last frame
-        timeSinceLastSpawn += Time.deltaTime;
+    IEnumerator StartProductionAfterDelay()
+    {
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(spawnDelay);
+
+        // Spawn 45 to 50 brown rice
+        int riceToSpawn = Random.Range(45, 51);
+        for (int i = 0; i < riceToSpawn; i++)
+        {
+            BrownRiceOutput();
+        }
+
+        // Spawn 40 to 60 husk
+        int husksToSpawn = Random.Range(40, 61);
+        for (int i = 0; i < husksToSpawn; i++)
+        {
+            HuskOutput();
+        }
+
+        // Reset the paddy collision count after production
+        paddyCollisionCount -= 50;
+        isProducing = false; // Stop production after the batch is done
     }
 
     void BrownRiceOutput()
     {
-        // Spawn the brown rice object at the spawnPoint position and rotation
+        // Spawn the brown rice object at the brownRiceSpawn position and rotation
         Instantiate(brownRice, brownRiceSpawn.position, brownRiceSpawn.rotation);
     }
 
     void HuskOutput()
     {
-        // Spawn the husk object at the spawnPoint position and rotation
+        // Spawn the husk object at the huskSpawn position and rotation
         Instantiate(husk, huskSpawn.position, huskSpawn.rotation);
     }
 }
