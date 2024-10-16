@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8244227444618304811}
   m_Layer: 0
   m_Name: Brown Rice
-  m_TagString: Untagged
+  m_TagString: BrownRice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 5db1671517f0bc14da943bd41ae75171, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: cb9e9e0bc93a12641b87f372276f907c, type: 3}
   m_Color: {r: 0.6981132, g: 0.6022393, b: 0.38462085, a: 1}
   m_FlipX: 0
   m_FlipY: 0

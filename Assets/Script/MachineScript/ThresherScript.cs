@@ -9,14 +9,15 @@ public class ThresherScript : MonoBehaviour
     public Transform paddySpawn; // Assign the spawn point for paddy in the Inspector
     public Transform stalkSpawn; // Assign the spawn point for stalk in the Inspector
     public float spawnDelay = 3f; // Delay between each batch of paddy
-    
-    public int SpikletCount = 10; // Required collisions to start production
+
 
     public int collisionCount = 0; // Count of collisions with "Spiklet"
     public bool isProducing = false; // Flag to track if the machine is producing
+
     private int totalSpawnedPaddy = 0; // Track how much paddy has been spawned
     private float timeSinceLastBatch = 0f; // Timer to track the time since the last batch
 
+    // public int SpikletCount = 10; // Required collisions to start production
     void Update()
     {
         // If the machine is producing and there are still collisions counted

@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 1202109396725003938}
   - component: {fileID: 1202109396725003965}
   - component: {fileID: 1202109396725003964}
+  - component: {fileID: 6543287768260345953}
   - component: {fileID: 1202109396725003967}
   m_Layer: 0
   m_Name: Paddy
-  m_TagString: Untagged
+  m_TagString: Paddy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 5db1671517f0bc14da943bd41ae75171, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: cb9e9e0bc93a12641b87f372276f907c, type: 3}
   m_Color: {r: 1, g: 0.69417477, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,6 +106,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6543287768260345953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202109396725003966}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5bb442efbeca440bc7e3afaed2460f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &1202109396725003967
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
