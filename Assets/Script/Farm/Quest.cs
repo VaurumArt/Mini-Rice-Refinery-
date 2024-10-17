@@ -83,7 +83,7 @@ public class Quest : MonoBehaviour
 
     private void UpdateOrderUi()
     {
-        orderText.text = "Order " + supplyOrder + " coins and rice needed";
+        orderText.text = "Order " + supplyOrder + " sack rice needed";
     }
 
     private void UpdateTimerUI()
