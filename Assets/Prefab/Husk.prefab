@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2590663960922182441}
   m_Layer: 0
   m_Name: Husk
-  m_TagString: Untagged
+  m_TagString: Husk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 5db1671517f0bc14da943bd41ae75171, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 3391042c3977ba74b877f442bb71d568, type: 3}
   m_Color: {r: 0.6226415, g: 0.48917705, b: 0.17856885, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2590663962366587724
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 5db1671517f0bc14da943bd41ae75171, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: cb9e9e0bc93a12641b87f372276f907c, type: 3}
   m_Color: {r: 0.8301887, g: 0.6163729, b: 0.1127803, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -284,6 +284,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

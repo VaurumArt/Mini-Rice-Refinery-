@@ -4,46 +4,60 @@ using UnityEngine;
 
 public class GrinderScript : MonoBehaviour
 {
-    public GameObject flour; // Assign the flour object to spawn in the Inspector
-    public Transform flourSpawn; // Assign the spawn point for flour in the Inspector
-    public float spawnDelay = 0.5f; // Delay between spawns while holding space
-
-    private float timeSinceLastSpawn = 0f;
-    private int flourCount = 0; // Counter for flour produced
+    public GameObject RiceFlour; // Assign the brown rice object to spawn in the Inspector
+  
+    public Transform RiceFlourSpawn; // Assign the spawn point for brown rice in the Inspector
+  
+    public float spawnDelay = 3f; // Delay before starting production after reaching 50 BrownRice collisions
+    public int standradRCollisionCount = 0; // Counter for "BrownRice" collisions
+    public bool isProducing = false; // Flag to control the production process
 
     void Update()
     {
-        // Check if the spacebar is held down
-        if (Input.GetKey(KeyCode.Space))
+        // Production will start after the delay, handled in the coroutine
+    }
+
+    // Method to detect collisions with "BrownRice" tagged objects
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("CrackRice"))
         {
-            // Check if enough time has passed since the last spawn
-            if (timeSinceLastSpawn >= spawnDelay)
+            standradRCollisionCount++;
+          
+            Destroy(collision.gameObject);
+
+            // Start production only if the collision count reaches exactly 50
+            if (standradRCollisionCount >= 50 && !isProducing)
             {
-                // Spawn 1 flour
-                FlourOutput();
+                isProducing = true;
+                Debug.Log("Reached 50 FlourRice collisions. Starting production after delay.");
 
-                // Increment flour count
-                flourCount++;
-
-                // Check if 1 flour has been produced
-                if (flourCount >= 1)
-                {
-                    // Reset flour count after producing flour
-                    flourCount = 0; // Reset the flour count after producing flour
-                }
-
-                // Reset the time since last spawn
-                timeSinceLastSpawn = 0f;
+                // Start the production process with a 3-second delay
+                StartCoroutine(StartProductionAfterDelay());
             }
         }
-
-        // Increment the timer by the time that has passed since the last frame
-        timeSinceLastSpawn += Time.deltaTime;
     }
 
-    void FlourOutput()
+    IEnumerator StartProductionAfterDelay()
     {
-        // Spawn the flour object at the spawnPoint position and rotation
-        Instantiate(flour, flourSpawn.position, flourSpawn.rotation);
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(spawnDelay);
+
+        // Spawn 45 to 50 standard rice
+        int flourToSpawn = Random.Range(100,120);
+        for (int i = 0; i < flourToSpawn; i++)
+        {
+            StandardRiceOutput();
+        }
+        // Reset the brown rice collision count after production
+        standradRCollisionCount -= 50;
+        isProducing = false; // Stop production after the batch is done
     }
+
+    void StandardRiceOutput()
+    {
+        Instantiate(RiceFlour, RiceFlourSpawn.position, RiceFlourSpawn.rotation);
+    }
+
+   
 }

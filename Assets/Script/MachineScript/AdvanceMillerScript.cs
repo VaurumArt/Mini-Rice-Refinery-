@@ -23,7 +23,7 @@ public class AdvanceMillerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("BrownRice"))
         {
             brownRCollisionCount++;
-            Debug.Log("BR collided " + brownRCollisionCount + " times.");
+           
 
             // Destroy the BrownRice object after counting
             Destroy(collision.gameObject);
