@@ -23,7 +23,7 @@ public class PolisheScript : MonoBehaviour
         if (collision.gameObject.CompareTag("StandardRice"))
         {
             standradRCollisionCount++;
-            Debug.Log("SR collided " + standradRCollisionCount + " times.");
+           
 
         
             Destroy(collision.gameObject);
