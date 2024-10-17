@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Text sackOfRiceText; 
+    public Text sackOfRiceText;
     private int riceCount = 0;
     public int money = 100;
     public Text MoneyTxt;
     public Sprite sack;
-
 
     public void AddRice(int amount)
     {
@@ -18,6 +17,16 @@ public class UIManager : MonoBehaviour
         UpdateSackUI();
     }
 
+    public void SubtractRice(int amount)
+    {
+        riceCount -= amount;
+        UpdateSackUI();
+    }
+
+    public int GetRiceCount()
+    {
+        return riceCount;
+    }
 
     public void UpdateSackUI()
     {
@@ -27,7 +36,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         MoneyTxt.text = "Money: " + money;
-
     }
 
     public void Transactions(int value)
@@ -47,5 +55,5 @@ public class UIManager : MonoBehaviour
         money += value;
         MoneyTxt.text = "Money: " + money;
     }
-
 }
+
