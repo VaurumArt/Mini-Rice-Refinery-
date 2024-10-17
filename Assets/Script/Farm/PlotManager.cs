@@ -13,21 +13,25 @@ public class PlotManager : MonoBehaviour
     float timeBtwStages = 2f;
     float timer;
 
-    // Start is called before the first frame update
+    public UIManager uiManager;
+
+    // Added for sack handling
+    public GameObject sackPrefab; // A prefab for the sack
+    private GameObject sackInstance;
+
     void Start()
     {
         plant = transform.GetChild(0).GetComponent<SpriteRenderer>();
         plantCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPlanted)
         {
             timer -= Time.deltaTime;
 
-            if(timer < 0 && plantStage < plantStages.Length - 1)
+            if (timer < 0 && plantStage < plantStages.Length - 1)
             {
                 timer = timeBtwStages;
                 plantStage++;
@@ -41,7 +45,7 @@ public class PlotManager : MonoBehaviour
         if (isPlanted)
         {
             if (plantStage == plantStages.Length - 1)
-            Harvest();
+                Harvest();
         }
         else
         {
@@ -55,7 +59,31 @@ public class PlotManager : MonoBehaviour
         Debug.Log("Harvest");
         isPlanted = false;
         plant.gameObject.SetActive(false);
+        uiManager.Harvest(10);
+        uiManager.UpdateSackUI();
+
+        // Inform UIManager to add harvested rice
+        if (uiManager != null)
+        {
+            uiManager.AddRice(1); // Assuming 1 rice per harvest
+        }
+
+        // Spawn the sack immediately after harvest
+        SpawnSack();
     }
+
+    void SpawnSack()
+    {
+        // If a sack is already there from a previous harvest, destroy it first
+        //if (sackInstance != null)
+        //{
+        //    Destroy(sackInstance);
+        //}
+
+        // Instantiate the sack at the plant's position
+        sackInstance = Instantiate(sackPrefab, plant.transform.position, Quaternion.identity);
+    }
+
     void Plant()
     {
         Debug.Log("Planted");
@@ -64,6 +92,7 @@ public class PlotManager : MonoBehaviour
         UpdatePlant();
         timer = timeBtwStages;
         plant.gameObject.SetActive(true);
+        uiManager.Plants(10);
     }
 
     void UpdatePlant()
@@ -72,5 +101,4 @@ public class PlotManager : MonoBehaviour
         plantCollider.size = plant.sprite.bounds.size;
         plantCollider.offset = new Vector2(0, plant.bounds.size.y / 2);
     }
-
 }

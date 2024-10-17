@@ -209,10 +209,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlanted: 0
   plantStages:
-  - {fileID: -8394842838752092067, guid: ada5e51f7ee97f3449fd781bcdbdd6b9, type: 3}
-  - {fileID: 219824760930137349, guid: ada5e51f7ee97f3449fd781bcdbdd6b9, type: 3}
-  - {fileID: 7481928061986532370, guid: ada5e51f7ee97f3449fd781bcdbdd6b9, type: 3}
-  - {fileID: 1749050814246198957, guid: ada5e51f7ee97f3449fd781bcdbdd6b9, type: 3}
+  - {fileID: 21300000, guid: adf15ec4126ecd84c9e2aaf030381e1d, type: 3}
+  - {fileID: 21300000, guid: 5febbb6e2bc3b0d4bb75fb1b9257498b, type: 3}
+  - {fileID: 21300000, guid: 3d1816623d89bb84894440be7c881a1a, type: 3}
+  - {fileID: 21300000, guid: 5ae8534185484aa40b649108ac452714, type: 3}
+  uiManager: {fileID: 0}
+  sackPrefab: {fileID: 3436644389994269536, guid: d8cff893b63c86744a624147ddc6f5d4, type: 3}
 --- !u!61 &6983018022924711180
 BoxCollider2D:
   m_ObjectHideFlags: 0
