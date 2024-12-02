@@ -2,28 +2,46 @@ using UnityEngine;
 
 public class DraggableObjects : MonoBehaviour
 {
-    private bool isDragging = false;
+    private bool isDragging = false; // Flag to track if we are dragging
+    private Vector3 mouseOffset; // Offset between mouse and object position
+    private Camera mainCamera; // Store reference to the Main Camera
+
+    void Start()
+    {
+        // Ensure that we are using the correct camera
+        mainCamera = Camera.main;
+    }
 
     void Update()
     {
         // If the object is being dragged
         if (isDragging)
         {
-            // Get the mouse position in world space with proper Z-axis handling for 2D
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+            // Get the current mouse position in world space using the Main Camera
+            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+            // Preserve the Z position of the object, so it doesn't change in depth
+            mousePosition.z = transform.position.z; // Ensuring Z is the same as the object's Z
 
             // Set the object's position to the mouse position
-            transform.position = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
+            transform.position = mousePosition + mouseOffset;
         }
     }
 
     void OnMouseDown()
     {
-        isDragging = true; // Start dragging the object
+        // Start dragging the object when mouse is clicked
+        isDragging = true;
+
+        // Calculate the offset between the object's position and mouse position
+        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.position.z; // Keep the same Z position as the object
+        mouseOffset = transform.position - mousePosition;
     }
 
     void OnMouseUp()
     {
-        isDragging = false; // Stop dragging the object
+        // Stop dragging the object when mouse button is released
+        isDragging = false;
     }
 }
