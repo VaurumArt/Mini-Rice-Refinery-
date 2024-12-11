@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a954b95024eeac4fbbd99c0e549a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100
+  money: 5000
   moneyText: {fileID: 290340340}
 --- !u!4 &124827924
 Transform:
@@ -1099,7 +1099,7 @@ Transform:
   - {fileID: 383171424}
   - {fileID: 1049558969}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &521408530
 BoxCollider2D:
@@ -1255,6 +1255,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490bf47ea21c307488b9922196ecb922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultPosition: {x: 126.8, y: 52, z: 0}
+  machine1Position: {x: 126.8, y: 33.7, z: 0}
+  machine2Position: {x: 126.8, y: 12.7, z: 0}
+  machine3Position: {x: 126.8, y: -7, z: 0}
+  machine4Position: {x: 126.8, y: -24.7, z: 0}
+  machine1: {fileID: 826311546}
+  machine2: {fileID: 909991123}
+  machine3: {fileID: 521408526}
+  machine4: {fileID: 644527171}
 --- !u!61 &560700747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1366,7 +1375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560700744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.8, y: -24.9, z: 0}
+  m_LocalPosition: {x: 126.8, y: -24.7, z: 0}
   m_LocalScale: {x: 139.82909, y: 10.148949, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1716,7 +1725,7 @@ Transform:
   - {fileID: 1371535754}
   - {fileID: 1659757114}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &644527175
 BoxCollider2D:
@@ -2432,7 +2441,7 @@ RectTransform:
   - {fileID: 289488177}
   - {fileID: 1636915549}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4480,7 +4489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902449211
 GameObject:
