@@ -50,11 +50,11 @@ public class FloorScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Spiklet"))
-        {
-            moneySystem.AddMoney(5);
-            Destroy(collision.gameObject);
-        }
+       // else if (collision.gameObject.CompareTag("Spiklet"))
+      //  {
+      //   moneySystem.AddMoney(5);
+      //     Destroy(collision.gameObject);
+      // }
         else if (collision.gameObject.CompareTag("Stalk"))
         {
             Destroy(collision.gameObject);
