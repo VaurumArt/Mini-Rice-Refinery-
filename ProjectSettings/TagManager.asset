@@ -10,6 +10,8 @@ TagManager:
   - BasicMillerHole
   - BrownRice
   - StandardRice
+  - Truck
+  - Sack
   layers:
   - Default
   - TransparentFX

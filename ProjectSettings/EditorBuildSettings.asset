@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Machine Scene.unity
+    path: Assets/Prefab/Scenes/Farm.unity
+    guid: cea89c4ada2420a4eaf65bbe105fd566
+  - enabled: 1
+    path: Assets/Prefab/Scenes/ExampleMachineScene.unity
+    guid: 5426cb2a1bfb76245b69fa0b44fdfd28
+  - enabled: 1
+    path: Assets/Prefab/Scenes/Machine Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

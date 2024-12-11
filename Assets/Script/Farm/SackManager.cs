@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SackManager : MonoBehaviour
 {
+    FarmManager fm;
+
     private bool isDragging = false;
 
     void Update()
@@ -16,17 +18,46 @@ public class SackManager : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    private void Start()
     {
-        // Start dragging when clicked
-        isDragging = true;
-        Debug.Log("Sack is being dragged");
+        if (fm == null)
+        {
+            fm = FindObjectOfType<FarmManager>();
+            if (fm == null)
+            {
+                Debug.LogError("FarmManager not found in the scene!");
+            }
+        }
     }
 
-    private void OnMouseUp()
+
+    //private void OnMouseDown()
+    //{
+    //    fm.NumberOfHarvestRice(1);
+    //    Destroy(gameObject);
+    //    // Start dragging when clicked
+    //    //isDragging = true;
+    //    //Debug.Log("Sack is being dragged");
+    //}
+
+    private void OnMouseDown()
     {
-        // Stop dragging when the mouse is released
-        isDragging = false;
-        Debug.Log("Sack dropped");
+        if (gameObject == null)
+        {
+            Debug.LogError("GameObject is null!");
+            return;
+        }
+
+        fm.NumberOfHarvestRice(1);
+        Debug.Log("Destroying Sack: " + gameObject.name);
+        Destroy(gameObject);
     }
+
+
+    //private void OnMouseUp()
+    //{
+    //    // Stop dragging when the mouse is released
+    //    isDragging = false;
+    //    Debug.Log("Sack dropped");
+    //}
 }
