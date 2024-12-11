@@ -785,7 +785,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383171423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.576, z: 0}
+  m_LocalPosition: {x: 4.6, y: -16.7, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 426249751}
@@ -1114,7 +1114,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000019669533, y: 0.54523253}
+  m_Offset: {x: 4.6182537, y: 6.4351816}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1125,7 +1125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2192782, y: 0.30884492}
+  m_Size: {x: 32.141518, y: 12.088743}
   m_EdgeRadius: 0
 --- !u!61 &521408531
 BoxCollider2D:
@@ -1740,7 +1740,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012125939, y: 0.08379698}
+  m_Offset: {x: 6.330529, y: 6.336367}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1751,7 +1751,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2182527, y: 1.167594}
+  m_Size: {x: 22.806093, y: 13.672734}
   m_EdgeRadius: 0
 --- !u!1 &712245440 stripped
 GameObject:
@@ -1892,9 +1892,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cba0f75ce664c946b80edd73a0353fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machine1: {fileID: 826311546}
+  machine2: {fileID: 909991123}
+  machine3: {fileID: 521408526}
+  machine4: {fileID: 644527171}
   scrollSpeed: 50
   edgeThickness: 10
-  minY: -10
+  minY: 70
   maxY: 70
 --- !u!1 &744304241
 GameObject:
@@ -2103,7 +2107,7 @@ GameObject:
   - component: {fileID: 823501692}
   - component: {fileID: 823501691}
   m_Layer: 5
-  m_Name: BuythresherButton
+  m_Name: BuyBasicMillerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2503,7 +2507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878799956}
   m_LocalRotation: {x: 0, y: 0, z: 0.008726558, w: 0.999962}
-  m_LocalPosition: {x: -0.942, y: 0.243, z: 0}
+  m_LocalPosition: {x: -33, y: 5, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 840476774}
@@ -2681,7 +2685,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.05485168}
+  m_Offset: {x: 4.3032227, y: 11.975929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2692,7 +2696,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.1097033}
+  m_Size: {x: 30.541016, y: 2.621643}
   m_EdgeRadius: 0
 --- !u!1001 &928278873
 PrefabInstance:
@@ -3446,7 +3450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369006256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.624, y: 0.356, z: 0}
+  m_LocalPosition: {x: -21.8, y: -11.2, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 1080185810}
@@ -3642,7 +3646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485971881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.603, z: 0}
+  m_LocalPosition: {x: -15.7, y: -12.9, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_Children:
   - {fileID: 1892742377}
@@ -3768,7 +3772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523713466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: -0.54, z: 0}
+  m_LocalPosition: {x: 7.7, y: -17.1, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 1056615135}
@@ -4012,7 +4016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752058956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.018, y: -0.573, z: 0}
+  m_LocalPosition: {x: 11.4, y: -15.3, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 755188452}
@@ -4337,7 +4341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875610044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.97, y: 0.41, z: 0}
+  m_LocalPosition: {x: -20.8, y: 6.6, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 1902449212}
@@ -4591,7 +4595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Buy-Thresher for:250
+  m_Text: 'Buy-Basic Miller for:250
 
 '
 --- !u!222 &1910391901

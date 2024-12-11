@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+  
+
+    public GameObject machine1;
+    public GameObject machine2;
+    public GameObject machine3;
+    public GameObject machine4;
+
     [Header("Scrolling Settings")]
     public float scrollSpeed = 20f;       // Speed of the camera movement
     public float edgeThickness = 10f;    // Thickness of the screen edge to trigger movement
@@ -35,7 +42,37 @@ public class CameraController : MonoBehaviour
 
         // Apply the new position
         transform.position = newPosition;
+      
     }
 
+    public void FixedUpdate()
+    {
+        UpdateCamPosition();
+    }
+
+        void UpdateCamPosition()
+    {
+        // Check the state of the machines and prioritize the most expensive/last machine
+        if (machine4.activeSelf)
+        {
+            minY = -10f;
+        }
+        else if (machine3.activeSelf)
+        {
+            minY = 10f;
+        }
+        else if (machine2.activeSelf)
+        {
+            minY = 30f;
+        }
+        else if (machine1.activeSelf)
+        {
+            minY = 50f;
+        }
+        else
+        {
+            minY = 70f;
+        }
+    }
 }
 
