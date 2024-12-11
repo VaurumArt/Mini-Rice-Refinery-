@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a954b95024eeac4fbbd99c0e549a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 5000
+  money: 100
   moneyText: {fileID: 290340340}
 --- !u!4 &124827924
 Transform:
