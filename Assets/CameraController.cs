@@ -9,8 +9,8 @@ public class CameraController : MonoBehaviour
     public float edgeThickness = 10f;    // Thickness of the screen edge to trigger movement
 
     [Header("Camera Bounds")]
-    public float minY = 0f;              // Minimum Y boundary for the camera
-    public float maxY = 50f;             // Maximum Y boundary for the camera
+    public float minY = 70f; //50 //last machine -10              // Minimum Y boundary for the camera
+    public float maxY = 70f;             // Maximum Y boundary for the camera
 
     void Update()
     {
