@@ -11,13 +11,26 @@ public class FloorScript : MonoBehaviour
     public Vector3 machine1Position; // Position when Machine 1 is enabled
     public Vector3 machine2Position; // Position when Machine 2 is enabled
     public Vector3 machine3Position; // Position when Machine 3 is enabled
-    public Vector3 machine4Position; // Position when Machine 3 is enabled
+    public Vector3 machine4Position; // Position when Machine 4 is enabled
 
     // References to the machines
     public GameObject machine1;
     public GameObject machine2;
     public GameObject machine3;
     public GameObject machine4;
+
+    // Prices for each item type
+    [Header("Item Prices")]
+    public int branPrice = 5;
+    public int brownRicePrice = 5;
+    public int crackRicePrice = 5;
+    public int huskPrice = 5;
+    public int paddyPrice = 5;
+    public int riceFlourPrice = 5;
+    public int spikletPrice = 5;
+    public int stalkPrice = 5;
+    public int standardRicePrice = 5;
+    public int premiumRicePrice = 5;
 
     void Start()
     {
@@ -74,54 +87,53 @@ public class FloorScript : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bran"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(branPrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("BrownRice"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(brownRicePrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("CrackRice"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(crackRicePrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Husk"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(huskPrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Paddy"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(paddyPrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("RiceFlour"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(riceFlourPrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Spiklet"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(spikletPrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Stalk"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(stalkPrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("StandardRice"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(standardRicePrice);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("PremiumRice"))
         {
-            moneySystem.AddMoney(5);
+            moneySystem.AddMoney(premiumRicePrice);
             Destroy(collision.gameObject);
         }
     }
 }
-

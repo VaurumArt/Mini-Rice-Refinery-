@@ -236,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10305634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01024, y: -1.87, z: 0}
+  m_LocalPosition: {x: -0.0067300005, y: -1.87, z: 0}
   m_LocalScale: {x: 0.00033696054, y: 0.18039307, z: 1.8308}
   m_Children: []
   m_Father: {fileID: 560700750}
@@ -283,7 +283,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 84909ea83a69d924a923c0a868ec1346, type: 3}
-  m_Color: {r: 0.9764706, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.040711403, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -335,7 +335,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124827922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 52.65, y: 42.15, z: -61.274178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machine: {fileID: 826311546}
   requiredObject: {fileID: 1858555156}
-  machineCost: 250
+  machineCost: 20000
   buyButton: {fileID: 823501691}
   feedbackText: {fileID: 1636915550}
   availableColor: {r: 0, g: 1, b: 0, a: 1}
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machine: {fileID: 909991123}
   requiredObject: {fileID: 826311546}
-  machineCost: 650
+  machineCost: 70000
   buyButton: {fileID: 431657917}
   feedbackText: {fileID: 1636915550}
   availableColor: {r: 0, g: 1, b: 0, a: 1}
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machine: {fileID: 644527171}
   requiredObject: {fileID: 521408526}
-  machineCost: 100
+  machineCost: 100000
   buyButton: {fileID: 289488178}
   feedbackText: {fileID: 1636915550}
   availableColor: {r: 0, g: 1, b: 0, a: 1}
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machine: {fileID: 521408526}
   requiredObject: {fileID: 909991123}
-  machineCost: 1000
+  machineCost: 200000
   buyButton: {fileID: 2091906823}
   feedbackText: {fileID: 1636915550}
   availableColor: {r: 0, g: 1, b: 0, a: 1}
@@ -434,7 +434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &181446144
 Transform:
   m_ObjectHideFlags: 0
@@ -913,10 +913,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -924,10 +924,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Buy-Polisher for: 1000
-
-
-'
+  m_Text: "Buy-Polisher for:\n 200,000\n\n"
 --- !u!222 &301612172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1439,7 +1436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496962594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00331, y: -1.86, z: 0}
+  m_LocalPosition: {x: 0.00043, y: -1.86, z: 0}
   m_LocalScale: {x: 0.00033696054, y: 0.18039307, z: 1.8308}
   m_Children: []
   m_Father: {fileID: 560700750}
@@ -1893,6 +1890,16 @@ MonoBehaviour:
   machine2: {fileID: 909991123}
   machine3: {fileID: 521408526}
   machine4: {fileID: 644527171}
+  branPrice: 1
+  brownRicePrice: 12
+  crackRicePrice: 3
+  huskPrice: 1
+  paddyPrice: 2
+  riceFlourPrice: 10
+  spikletPrice: 2
+  stalkPrice: 1
+  standardRicePrice: 7
+  premiumRicePrice: 20
 --- !u!61 &560700747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2075,10 +2082,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2086,7 +2093,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy-Grinder for:1500
+  m_Text: 'Buy-Grinder for:
+
+    100,000'
 --- !u!222 &589444508
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2279,10 +2288,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2290,9 +2299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Buy-Adv Miller for:500
-
-'
+  m_Text: "Buy -Adv Miller for: \n70,000"
 --- !u!222 &610001943
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2441,8 +2448,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644527171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 114.9, y: -4.9, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: 118.3, y: -4.9, z: 0}
+  m_LocalScale: {x: -0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 1485971882}
   - {fileID: 1371535754}
@@ -2501,7 +2508,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657349769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00168, y: -2.05, z: 0}
+  m_LocalPosition: {x: 0.0020599987, y: -2.05, z: 0}
   m_LocalScale: {x: 0.00033696054, y: 0.18039307, z: 1.8308}
   m_Children: []
   m_Father: {fileID: 560700750}
@@ -2945,7 +2952,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: d40a08b2f0a066e4abf55bf47df439d0, type: 3}
-  m_Color: {r: 0.509434, g: 0.4308562, b: 0.2998932, a: 1}
+  m_Color: {r: 0.37742966, g: 0.45742744, b: 0.5377358, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3698,7 +3705,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: d40a08b2f0a066e4abf55bf47df439d0, type: 3}
-  m_Color: {r: 0.509434, g: 0.4308562, b: 0.2998932, a: 1}
+  m_Color: {r: 0.37742966, g: 0.45742744, b: 0.5377358, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4284,7 +4291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291624517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00892, y: -2.05, z: 0}
+  m_LocalPosition: {x: -0.00541, y: -2.05, z: 0}
   m_LocalScale: {x: 0.00033696054, y: 0.18039307, z: 1.8308}
   m_Children: []
   m_Father: {fileID: 560700750}
@@ -4889,7 +4896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1667424065
 Transform:
   m_ObjectHideFlags: 0
@@ -5354,9 +5361,9 @@ MonoBehaviour:
   stalkSpawn: {fileID: 215181343}
   spawnDelay: 3
   spawnPerPaddy: 0.1
-  paddyPerBatch: 50
-  minStalksPerBatch: 1
-  maxStalksPerBatch: 2
+  paddyPerBatch: 25
+  minStalksPerBatch: 3
+  maxStalksPerBatch: 5
   stalkSpawnChance: 100
 --- !u!212 &1858555158
 SpriteRenderer:
@@ -5789,18 +5796,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 49
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Buy-Basic Miller for:250
+  m_Text: 'Buy - Basic Miller for: 20,000
 
 '
 --- !u!222 &1910391901
