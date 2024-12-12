@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -741, y: -273}
+  m_AnchoredPosition: {x: -659, y: -375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6965497
@@ -1881,10 +1881,10 @@ MonoBehaviour:
   machine2Position: {x: 0, y: 0, z: 0}
   machine3Position: {x: 0, y: 0, z: 0}
   machine4Position: {x: 0, y: 0, z: 0}
-  machine1: {fileID: 0}
-  machine2: {fileID: 0}
-  machine3: {fileID: 0}
-  machine4: {fileID: 0}
+  machine1: {fileID: 826311546}
+  machine2: {fileID: 909991123}
+  machine3: {fileID: 521408526}
+  machine4: {fileID: 644527171}
 --- !u!61 &560700747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3236,7 +3236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &827329488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5840,7 +5840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -733, y: -458}
+  m_AnchoredPosition: {x: 729, y: -414}
   m_SizeDelta: {x: 224.308, y: 75.7133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910805724
