@@ -11,6 +11,8 @@ public class BuyingMachine : MonoBehaviour
 
     public Button buyButton; // The UI button for buying the machine
     public Text feedbackText; // The UI text to show feedback messages
+    public Color availableColor = Color.green; // Color for available
+    public Color unavailableColor = Color.red; // Color for unavailable
 
     void Start()
     {
@@ -28,8 +30,14 @@ public class BuyingMachine : MonoBehaviour
         // Add listener to the button
         buyButton.onClick.AddListener(TryBuyMachine);
 
-        // Set initial feedback text
-        feedbackText.text = "Buy the machine for " + machineCost + "!";
+        // Update button state at the start
+        UpdateButtonState();
+    }
+
+    void Update()
+    {
+        // Continuously update button state based on conditions
+        UpdateButtonState();
     }
 
     void TryBuyMachine()
@@ -57,11 +65,28 @@ public class BuyingMachine : MonoBehaviour
         {
             feedbackText.text = "Not enough money to buy the machine!";
         }
+
+        // Update button state after attempting purchase
+        UpdateButtonState();
     }
 
     void EnableMachine()
     {
         machine.SetActive(true); // Enable the machine
     }
-}
 
+    void UpdateButtonState()
+    {
+        // Check if the machine can be bought
+        bool canBuy = requiredObject != null && requiredObject.activeSelf && !isBought && moneySystem.GetMoney() >= machineCost;
+
+        // Update button color based on availability
+        ColorBlock colors = buyButton.colors;
+        colors.normalColor = canBuy ? availableColor : unavailableColor;
+        colors.highlightedColor = canBuy ? availableColor : unavailableColor;
+        buyButton.colors = colors;
+
+        // Disable the button if unavailable
+        buyButton.interactable = canBuy;
+    }
+}

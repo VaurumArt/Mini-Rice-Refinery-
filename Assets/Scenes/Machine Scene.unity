@@ -326,8 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a954b95024eeac4fbbd99c0e549a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
-  moneyText: {fileID: 0}
+  money: 1
+  moneyText: {fileID: 290340340}
 --- !u!4 &124827924
 Transform:
   m_ObjectHideFlags: 0
@@ -354,11 +354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669e7da51a3cc4469ed1ba1cfb0dbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machine: {fileID: 0}
-  requiredObject: {fileID: 0}
-  machineCost: 100
-  buyButton: {fileID: 0}
-  feedbackText: {fileID: 0}
+  machine: {fileID: 826311546}
+  requiredObject: {fileID: 1858555156}
+  machineCost: 250
+  buyButton: {fileID: 823501691}
+  feedbackText: {fileID: 1636915550}
+  availableColor: {r: 0, g: 1, b: 0, a: 1}
+  unavailableColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &124827926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,11 +373,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669e7da51a3cc4469ed1ba1cfb0dbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machine: {fileID: 0}
-  requiredObject: {fileID: 0}
-  machineCost: 100
-  buyButton: {fileID: 0}
-  feedbackText: {fileID: 0}
+  machine: {fileID: 909991123}
+  requiredObject: {fileID: 826311546}
+  machineCost: 650
+  buyButton: {fileID: 431657917}
+  feedbackText: {fileID: 1636915550}
+  availableColor: {r: 0, g: 1, b: 0, a: 1}
+  unavailableColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &124827927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,11 +392,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669e7da51a3cc4469ed1ba1cfb0dbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machine: {fileID: 0}
-  requiredObject: {fileID: 0}
+  machine: {fileID: 644527171}
+  requiredObject: {fileID: 521408526}
   machineCost: 100
-  buyButton: {fileID: 0}
-  feedbackText: {fileID: 0}
+  buyButton: {fileID: 289488178}
+  feedbackText: {fileID: 1636915550}
+  availableColor: {r: 0, g: 1, b: 0, a: 1}
+  unavailableColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &124827928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,11 +411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669e7da51a3cc4469ed1ba1cfb0dbe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machine: {fileID: 0}
-  requiredObject: {fileID: 0}
-  machineCost: 100
-  buyButton: {fileID: 0}
-  feedbackText: {fileID: 0}
+  machine: {fileID: 521408526}
+  requiredObject: {fileID: 909991123}
+  machineCost: 1000
+  buyButton: {fileID: 2091906823}
+  feedbackText: {fileID: 1636915550}
+  availableColor: {r: 0, g: 1, b: 0, a: 1}
+  unavailableColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &181446143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,11 +1884,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490bf47ea21c307488b9922196ecb922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPosition: {x: 0, y: 0, z: 0}
-  machine1Position: {x: 0, y: 0, z: 0}
-  machine2Position: {x: 0, y: 0, z: 0}
-  machine3Position: {x: 0, y: 0, z: 0}
-  machine4Position: {x: 0, y: 0, z: 0}
+  defaultPosition: {x: 126.8, y: 53.1, z: 0}
+  machine1Position: {x: 126.8, y: 31.3, z: 0}
+  machine2Position: {x: 126.8, y: 13.4, z: 0}
+  machine3Position: {x: 126.8, y: -4.5, z: 0}
+  machine4Position: {x: 126.8, y: -26.8, z: 0}
   machine1: {fileID: 826311546}
   machine2: {fileID: 909991123}
   machine3: {fileID: 521408526}
@@ -1996,7 +2004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560700744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.8, y: -23.3, z: 0}
+  m_LocalPosition: {x: 126.8, y: -26.8, z: 0}
   m_LocalScale: {x: 5433.2773, y: 10.148949, z: 1}
   m_Children:
   - {fileID: 496962595}
@@ -4754,7 +4762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
