@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BuyingMachine : MonoBehaviour
 {
     public GameObject machine;  // The machine object to enable/disable
+    public GameObject requiredObject; // The prerequisite object that must be enabled
     public int machineCost = 100; // The cost of the machine
     private bool isBought = false; // Track if the machine has been bought
     private MoneySystem moneySystem; // Reference to the MoneySystem script
@@ -33,6 +34,13 @@ public class BuyingMachine : MonoBehaviour
 
     void TryBuyMachine()
     {
+        // Check if the prerequisite object is active
+        if (requiredObject != null && !requiredObject.activeSelf)
+        {
+            feedbackText.text = "You need to enable the prerequisite first!";
+            return;
+        }
+
         // Check if the player has enough money and the machine is not bought
         if (moneySystem.GetMoney() >= machineCost && !isBought)
         {
@@ -56,5 +64,4 @@ public class BuyingMachine : MonoBehaviour
         machine.SetActive(true); // Enable the machine
     }
 }
-
 

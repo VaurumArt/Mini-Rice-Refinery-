@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machine: {fileID: 826311546}
+  requiredObject: {fileID: 1858555156}
   machineCost: 250
   buyButton: {fileID: 823501691}
   feedbackText: {fileID: 1636915550}
@@ -371,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machine: {fileID: 909991123}
+  requiredObject: {fileID: 826311546}
   machineCost: 500
   buyButton: {fileID: 431657917}
   feedbackText: {fileID: 1636915550}
@@ -387,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machine: {fileID: 644527171}
+  requiredObject: {fileID: 521408526}
   machineCost: 1500
   buyButton: {fileID: 289488178}
   feedbackText: {fileID: 1636915550}
@@ -403,6 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machine: {fileID: 521408526}
+  requiredObject: {fileID: 909991123}
   machineCost: 1000
   buyButton: {fileID: 2091906823}
   feedbackText: {fileID: 1636915550}
