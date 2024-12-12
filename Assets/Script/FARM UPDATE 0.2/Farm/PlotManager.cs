@@ -8,6 +8,7 @@ public class PlotManager : MonoBehaviour
     SpriteRenderer plant;
     BoxCollider2D plantCollider;
 
+    public Sprite[] plantStages;
     int plantStage = 0;
     float timer;
 
@@ -33,8 +34,8 @@ public class PlotManager : MonoBehaviour
         if (isPlanted)
         {
             timer -= Time.deltaTime;
-
-            if (timer < 0 && plantStage < selectedPlant.plantStages.Length - 1)
+            //if (timer < 0 && plantStage < selectedPlant.plantStages.Length - 1)
+            if (timer < 0 && plantStage < plantStages.Length - 1)
             {
                 timer = selectedPlant.timeBtwStages;
                 plantStage++;
@@ -47,7 +48,8 @@ public class PlotManager : MonoBehaviour
     {
         if (isPlanted)
         {
-            if (plantStage == selectedPlant.plantStages.Length - 1)
+           // if (plantStage == selectedPlant.plantStages.Length - 1)
+                if (plantStage == plantStages.Length - 1)
                 Harvest();
         }
         else if(fm.isPlanting && fm.selectedPlant.plant.buyPrice <= fm.money)
@@ -117,7 +119,8 @@ public class PlotManager : MonoBehaviour
 
     void UpdatePlant()
     {
-        plant.sprite = selectedPlant.plantStages[plantStage];
+        //plant.sprite = selectedPlant.plantStages[plantStage];
+        plant.sprite = plantStages[plantStage];
         plantCollider.size = plant.sprite.bounds.size;
         plantCollider.offset = new Vector2(0, plant.bounds.size.y / 2);
     }

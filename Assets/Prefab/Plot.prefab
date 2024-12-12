@@ -119,9 +119,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6983018022924711183}
   - component: {fileID: 6983018022924711182}
-  - component: {fileID: 6983018022924711181}
   - component: {fileID: 6983018022924711180}
   - component: {fileID: 6983018022924711176}
+  - component: {fileID: 4575386159177921975}
   m_Layer: 0
   m_Name: Plot
   m_TagString: Untagged
@@ -184,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94a129d967b43d749a36ce0f7d59fc42, type: 3}
   m_Color: {r: 0.6415094, g: 0.34834754, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,26 +195,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6983018022924711181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6983018022924711187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8370645c5c948fe4f8643e017c345b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlanted: 0
-  plantStages:
-  - {fileID: 21300000, guid: adf15ec4126ecd84c9e2aaf030381e1d, type: 3}
-  - {fileID: 21300000, guid: 5febbb6e2bc3b0d4bb75fb1b9257498b, type: 3}
-  - {fileID: 21300000, guid: 3d1816623d89bb84894440be7c881a1a, type: 3}
-  - {fileID: 21300000, guid: 5ae8534185484aa40b649108ac452714, type: 3}
-  uiManager: {fileID: 0}
-  sackPrefab: {fileID: 3436644389994269536, guid: d8cff893b63c86744a624147ddc6f5d4, type: 3}
 --- !u!61 &6983018022924711180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -232,7 +212,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 54.339825, y: 49.670002}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -262,3 +242,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4575386159177921975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983018022924711187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85f3632baf21cb4e9b64a1f2cdcf008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlanted: 0
+  plantStages:
+  - {fileID: 21300000, guid: 3c5083dbc7f269e4f99dd1cd1d1e542e, type: 3}
+  - {fileID: 21300000, guid: 9b85f8c6d160bb54a8bab7f1d1e1f849, type: 3}
+  - {fileID: 21300000, guid: 45efa9eb19ef3d340b8dc4c88849c571, type: 3}
+  - {fileID: 21300000, guid: 78ecf5743b855da43b2a528f20a39533, type: 3}
+  sackPrefab: {fileID: 7579425605152726236, guid: 217ec1dd6388a004690f651007ddfcce, type: 3}

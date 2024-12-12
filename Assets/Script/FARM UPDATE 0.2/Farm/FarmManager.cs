@@ -16,7 +16,7 @@ public class FarmManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyTxt.text = "Coin " + money;
+        moneyTxt.text = "$ " + money;
         harvestTxt.text = " " + harvestRice;
  
     }
