@@ -4,60 +4,64 @@ using UnityEngine;
 
 public class GrinderScript : MonoBehaviour
 {
-    public GameObject RiceFlour; // Assign the brown rice object to spawn in the Inspector
-  
-    public Transform RiceFlourSpawn; // Assign the spawn point for brown rice in the Inspector
-  
-    public float spawnDelay = 3f; // Delay before starting production after reaching 50 BrownRice collisions
-    public int standradRCollisionCount = 0; // Counter for "BrownRice" collisions
-    public bool isProducing = false; // Flag to control the production process
+    [Header("Prefabs and Spawn Points")]
+    public GameObject riceFlour; // Assign the rice flour object to spawn in the Inspector
+    public Transform riceFlourSpawn; // Assign the spawn point for rice flour in the Inspector
 
-    void Update()
-    {
-        // Production will start after the delay, handled in the coroutine
-    }
+    [Header("Production Settings")]
+    public float spawnDelay = 3f;      // Delay between batches
+    public float spawnPerItem = 0.1f; // Delay per item spawned
+    public int crackRicePerBatch = 50; // Number of collisions needed to start production
+    public int minRiceFlour = 100;    // Minimum number of rice flour per batch
+    public int maxRiceFlour = 120;    // Maximum number of rice flour per batch
 
-    // Method to detect collisions with "BrownRice" tagged objects
+    // Queue to hold production batches for sequential processing
+    private Queue<int> productionQueue = new Queue<int>();
+    private bool isProcessing = false;
+
+    // Method detects collisions with "CrackRice" tagged objects
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("CrackRice"))
         {
-            standradRCollisionCount++;
-          
+            productionQueue.Enqueue(crackRicePerBatch); // Enqueue a new batch for processing
+            Debug.Log($"CrackRice added to queue. Queue size: {productionQueue.Count}");
+
+            // Destroy the CrackRice object after counting
             Destroy(collision.gameObject);
 
-            // Start production only if the collision count reaches exactly 50
-            if (standradRCollisionCount >= 50 && !isProducing)
+            // Start processing if not already active
+            if (!isProcessing)
             {
-                isProducing = true;
-                Debug.Log("Reached 50 FlourRice collisions. Starting production after delay.");
-
-                // Start the production process with a 3-second delay
-                StartCoroutine(StartProductionAfterDelay());
+                StartCoroutine(ProcessQueue());
             }
         }
     }
 
-    IEnumerator StartProductionAfterDelay()
+    // Coroutine to process production queue sequentially
+    IEnumerator ProcessQueue()
     {
-        // Wait for 3 seconds
-        yield return new WaitForSeconds(spawnDelay);
+        isProcessing = true;
 
-        // Spawn 45 to 50 standard rice
-        int flourToSpawn = Random.Range(100,120);
-        for (int i = 0; i < flourToSpawn; i++)
+        while (productionQueue.Count > 0)
         {
-            StandardRiceOutput();
+            int batchToProcess = productionQueue.Dequeue();
+            Debug.Log($"Processing batch. Remaining queue size: {productionQueue.Count}");
+
+            // Produce rice flour
+            int flourToSpawn = Random.Range(minRiceFlour, maxRiceFlour + 1);
+            Debug.Log($"Spawning {flourToSpawn} rice flour.");
+            for (int i = 0; i < flourToSpawn; i++)
+            {
+                Instantiate(riceFlour, riceFlourSpawn.position, riceFlourSpawn.rotation);
+                yield return new WaitForSeconds(spawnPerItem);
+            }
+
+            // Wait before processing the next batch
+            yield return new WaitForSeconds(spawnDelay);
         }
-        // Reset the brown rice collision count after production
-        standradRCollisionCount -= 50;
-        isProducing = false; // Stop production after the batch is done
-    }
 
-    void StandardRiceOutput()
-    {
-        Instantiate(RiceFlour, RiceFlourSpawn.position, RiceFlourSpawn.rotation);
+        isProcessing = false;
+        Debug.Log("Finished processing all batches.");
     }
-
-   
 }

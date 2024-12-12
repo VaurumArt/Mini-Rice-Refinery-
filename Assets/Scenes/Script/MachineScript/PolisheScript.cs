@@ -4,73 +4,77 @@ using UnityEngine;
 
 public class PolisheScript : MonoBehaviour
 {
-    public GameObject premiumRice; // Assign the brown rice object to spawn in the Inspector
-    public GameObject crackRice; // Assign the husk object to spawn in the Inspector
-    public Transform premiumRiceSpawn; // Assign the spawn point for brown rice in the Inspector
-    public Transform crackRiceSpawn; // Assign the spawn point for husk in the Inspector
-    public float spawnDelay = 3f; // Delay before starting production after reaching 50 BrownRice collisions
-    public int standradRCollisionCount = 0; // Counter for "BrownRice" collisions
-    public bool isProducing = false; // Flag to control the production process
+    [Header("Prefabs and Spawn Points")]
+    public GameObject premiumRice; // Assign the premium rice object to spawn in the Inspector
+    public GameObject crackRice;   // Assign the crack rice object to spawn in the Inspector
+    public Transform premiumRiceSpawn; // Assign the spawn point for premium rice in the Inspector
+    public Transform crackRiceSpawn;   // Assign the spawn point for crack rice in the Inspector
 
-    void Update()
-    {
-        // Production will start after the delay, handled in the coroutine
-    }
+    [Header("Production Settings")]
+    public float spawnDelay = 3f;      // Delay between batches
+    public float spawnPerItem = 0.1f; // Delay per item spawned
+    public int standardRicePerBatch = 50; // Number of collisions needed to start production
+    public int minPremiumRice = 45;   // Minimum number of premium rice per batch
+    public int maxPremiumRice = 50;   // Maximum number of premium rice per batch
+    public int minCrackRice = 32;     // Minimum number of crack rice per batch
+    public int maxCrackRice = 60;     // Maximum number of crack rice per batch
 
-    // Method to detect collisions with "BrownRice" tagged objects
+    // Queue to hold production batches for sequential processing
+    private Queue<int> productionQueue = new Queue<int>();
+    private bool isProcessing = false;
+
+    // Method detects collisions with "StandardRice" tagged objects
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("StandardRice"))
         {
-            standradRCollisionCount++;
-           
+            productionQueue.Enqueue(standardRicePerBatch); // Enqueue a new batch for processing
+            Debug.Log($"StandardRice added to queue. Queue size: {productionQueue.Count}");
 
-        
+            // Destroy the StandardRice object after counting
             Destroy(collision.gameObject);
 
-            // Start production only if the collision count reaches exactly 50
-            if (standradRCollisionCount >= 50 && !isProducing)
+            // Start processing if not already active
+            if (!isProcessing)
             {
-                isProducing = true;
-                Debug.Log("Reached 50 BrownRice collisions. Starting production after delay.");
-
-                // Start the production process with a 3-second delay
-                StartCoroutine(StartProductionAfterDelay());
+                StartCoroutine(ProcessQueue());
             }
         }
     }
 
-    IEnumerator StartProductionAfterDelay()
+    // Coroutine to process production queue sequentially
+    IEnumerator ProcessQueue()
     {
-        // Wait for 3 seconds
-        yield return new WaitForSeconds(spawnDelay);
+        isProcessing = true;
 
-        // Spawn 45 to 50 standard rice
-        int riceToSpawn = Random.Range(45, 51);
-        for (int i = 0; i < riceToSpawn; i++)
+        while (productionQueue.Count > 0)
         {
-            StandardRiceOutput();
+            int batchToProcess = productionQueue.Dequeue();
+            Debug.Log($"Processing batch. Remaining queue size: {productionQueue.Count}");
+
+            // Produce premium rice
+            int riceToSpawn = Random.Range(minPremiumRice, maxPremiumRice + 1);
+            Debug.Log($"Spawning {riceToSpawn} premium rice.");
+            for (int i = 0; i < riceToSpawn; i++)
+            {
+                Instantiate(premiumRice, premiumRiceSpawn.position, premiumRiceSpawn.rotation);
+                yield return new WaitForSeconds(spawnPerItem);
+            }
+
+            // Produce crack rice
+            int crackToSpawn = Random.Range(minCrackRice, maxCrackRice + 1);
+            Debug.Log($"Spawning {crackToSpawn} crack rice.");
+            for (int i = 0; i < crackToSpawn; i++)
+            {
+                Instantiate(crackRice, crackRiceSpawn.position, crackRiceSpawn.rotation);
+                yield return new WaitForSeconds(spawnPerItem);
+            }
+
+            // Wait before processing the next batch
+            yield return new WaitForSeconds(spawnDelay);
         }
 
-        // Spawn 120 to 150 bran
-        int branToSpawn = Random.Range(32, 60);
-        for (int i = 0; i < branToSpawn; i++)
-        {
-            BranOutput();
-        }
-
-        // Reset the brown rice collision count after production
-        standradRCollisionCount -= 50;
-        isProducing = false; // Stop production after the batch is done
-    }
-
-    void StandardRiceOutput()
-    {
-        Instantiate(premiumRice, premiumRiceSpawn.position, premiumRiceSpawn.rotation);
-    }
-
-    void BranOutput()
-    {
-        Instantiate(crackRice, crackRiceSpawn.position, crackRiceSpawn.rotation);
+        isProcessing = false;
+        Debug.Log("Finished processing all batches.");
     }
 }

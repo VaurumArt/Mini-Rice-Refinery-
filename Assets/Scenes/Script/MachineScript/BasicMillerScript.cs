@@ -1,71 +1,78 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicMillerScript : MonoBehaviour
 {
     // Public variables assigned in the Inspector
+    [Header("Prefabs and Spawn Points")]
     public GameObject brownRice;          // Brown rice prefab to spawn
     public GameObject husk;               // Husk prefab to spawn
     public Transform brownRiceSpawn;      // Spawn point for brown rice
     public Transform huskSpawn;           // Spawn point for husk
-    public float spawnDelay = 3f;         // Delay before production starts after 50 paddy collisions
 
-    // Private variables for production logic
-    private int paddyCollisionCount = 0;  // Tracks number of "Paddy" collisions
-    private bool isProducing = false;     // Controls if the production process is running
+    [Header("Production Settings")]
+    public float spawnDelay = 3f;         // Delay between batches
+    public float spawnPerItem = 0.1f;     // Delay per item spawned
+    public int paddyPerBatch = 50;        // Number of collisions needed to start production
+    public int minBrownRice = 45;         // Minimum number of brown rice per batch
+    public int maxBrownRice = 50;         // Maximum number of brown rice per batch
+    public int minHusk = 40;              // Minimum number of husk per batch
+    public int maxHusk = 60;              // Maximum number of husk per batch
+
+    // Queue to hold production batches for sequential processing
+    private Queue<int> productionQueue = new Queue<int>();
+    private bool isProcessing = false;
 
     // Method detects collisions with "Paddy" tagged objects
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Paddy"))
         {
-            paddyCollisionCount++;  // Increment collision count
-            Debug.Log("Paddy collided " + paddyCollisionCount + " times.");
+            productionQueue.Enqueue(paddyPerBatch); // Enqueue a new batch for processing
+            Debug.Log($"Paddy added to queue. Queue size: {productionQueue.Count}");
 
-            // Start production when 50 paddy collisions are reached
-            if (paddyCollisionCount >= 50 && !isProducing)
+            // Start processing if not already active
+            if (!isProcessing)
             {
-                isProducing = true;  // Prevent further triggers during production
-                Debug.Log("50 Paddy collisions reached. Starting production.");
-                StartCoroutine(StartProductionAfterDelay());  // Start production process
+                StartCoroutine(ProcessQueue());
             }
         }
     }
 
-    // Coroutine handles production after a delay
-    IEnumerator StartProductionAfterDelay()
+    // Coroutine to process production queue sequentially
+    IEnumerator ProcessQueue()
     {
-        // Wait for the specified delay before starting production
-        yield return new WaitForSeconds(spawnDelay);
+        isProcessing = true;
 
-        // Produce 45 to 50 brown rice
-        int riceToSpawn = Random.Range(45, 51);
-        for (int i = 0; i < riceToSpawn; i++)
+        while (productionQueue.Count > 0)
         {
-            SpawnBrownRice();
+            int paddyToProcess = productionQueue.Dequeue();
+            Debug.Log($"Processing batch. Remaining queue size: {productionQueue.Count}");
+
+            // Produce brown rice
+            int riceToSpawn = Random.Range(minBrownRice, maxBrownRice + 1);
+            Debug.Log($"Spawning {riceToSpawn} brown rice.");
+            for (int i = 0; i < riceToSpawn; i++)
+            {
+                Instantiate(brownRice, brownRiceSpawn.position, brownRiceSpawn.rotation);
+                yield return new WaitForSeconds(spawnPerItem);
+            }
+
+            // Produce husk
+            int husksToSpawn = Random.Range(minHusk, maxHusk + 1);
+            Debug.Log($"Spawning {husksToSpawn} husks.");
+            for (int i = 0; i < husksToSpawn; i++)
+            {
+                Instantiate(husk, huskSpawn.position, huskSpawn.rotation);
+                yield return new WaitForSeconds(spawnPerItem);
+            }
+
+            // Wait before processing the next batch
+            yield return new WaitForSeconds(spawnDelay);
         }
 
-        // Produce 40 to 60 husk
-        int husksToSpawn = Random.Range(40, 61);
-        for (int i = 0; i < husksToSpawn; i++)
-        {
-            SpawnHusk();
-        }
-
-        // Reset the collision count for the next production cycle
-        paddyCollisionCount -= 50;
-        isProducing = false;  // Allow future production after the batch is done
-    }
-
-    // Spawn the brown rice at the designated spawn point
-    void SpawnBrownRice()
-    {
-        Instantiate(brownRice, brownRiceSpawn.position, brownRiceSpawn.rotation);
-    }
-
-    // Spawn the husk at the designated spawn point
-    void SpawnHusk()
-    {
-        Instantiate(husk, huskSpawn.position, huskSpawn.rotation);
+        isProcessing = false;
+        Debug.Log("Finished processing all batches.");
     }
 }
