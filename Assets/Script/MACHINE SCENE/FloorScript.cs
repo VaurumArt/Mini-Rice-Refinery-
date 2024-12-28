@@ -115,11 +115,11 @@ public class FloorScript : MonoBehaviour
             moneySystem.AddMoney(riceFlourPrice);
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Spiklet"))
-        {
-            moneySystem.AddMoney(spikletPrice);
-            Destroy(collision.gameObject);
-        }
+      //  else if (collision.gameObject.CompareTag("Spiklet"))
+       // {
+         //   moneySystem.AddMoney(spikletPrice);
+           // Destroy(collision.gameObject);
+       // }
         else if (collision.gameObject.CompareTag("Stalk"))
         {
             moneySystem.AddMoney(stalkPrice);
